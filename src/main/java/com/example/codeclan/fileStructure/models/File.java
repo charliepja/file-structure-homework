@@ -1,9 +1,23 @@
 package com.example.codeclan.fileStructure.models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "files")
 public class File {
+
+    @Column
     private String name;
+
+    @Column
     private String extension;
+
+    @Column
     private int size;
+
+    @ManyToOne
+    @JoinColumn(name = "folder_id", nullable = false)
     private Folder folder;
 
     public File(String name, String extension, int size, Folder folder) {

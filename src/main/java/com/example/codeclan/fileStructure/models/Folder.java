@@ -1,12 +1,26 @@
 package com.example.codeclan.fileStructure.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "folders")
 public class Folder {
+
+    @Column
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @OneToMany(mappedBy = "folder")
     private List<File> files;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     public Folder(String name, User user) {
         this.name = name;
@@ -39,5 +53,13 @@ public class Folder {
 
     public void setFiles(List<File> files) {
         this.files = files;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
