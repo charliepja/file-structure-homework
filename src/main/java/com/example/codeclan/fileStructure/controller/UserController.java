@@ -16,17 +16,17 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping(name = "/users")
+    @GetMapping(value = "/users")
     public ResponseEntity<List<User>> getAllUsers() {
         return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(name = "/users/{id}")
+    @GetMapping(value = "/users/{id}")
     public ResponseEntity<Optional<User>> getUserById(@PathVariable Long id) {
         return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(name = "/users")
+    @PostMapping(value = "/users")
     public ResponseEntity createNewUser(@RequestBody User newUser) {
         userRepository.save(newUser);
         return new ResponseEntity(HttpStatus.CREATED);
