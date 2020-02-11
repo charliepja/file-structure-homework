@@ -1,4 +1,7 @@
 package com.example.codeclan.fileStructure.repositories;
 
-public interface UserRepository {
+import com.example.codeclan.fileStructure.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
 }
